@@ -11,7 +11,7 @@ class ProductRepository implements ProductRepositoryInterface
     public function index()
     {
         // Retrieve and return all products from the database
-        return Product::all();
+        return Product::paginate(5);
     }
     public function store(array $data)
     {

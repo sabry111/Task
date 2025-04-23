@@ -13,7 +13,7 @@ class OrderRepository implements OrderRepositoryInterface
     public function index()
     {
         // Retrieve all orders with their related products, ordered by latest
-        return Order::with('products')->latest()->get();
+        return Order::with('products')->latest()->paginate(5);
     }
     public function store(array $data)
     {
@@ -73,6 +73,4 @@ class OrderRepository implements OrderRepositoryInterface
             $product->increment('quantity', $product->pivot->quantity);
         }
     }
-
-    
 }
